@@ -32,13 +32,15 @@ The automated suite verifies seeded generation, source/exit reachability across 
 
 Type checking, authored-source lint, and a static production export passed locally. The example workflow in `docs/ci-workflow.yml` runs those checks on GitHub when installed under `.github/workflows/`. The current GitHub CLI authorization does not include workflow-writing permission, so the workflow is supplied as a template. Lint excludes the generated component catalogue and generated hooks, retaining their upstream implementations. The imperative canvas game is not compiled with React Compiler; its mutable simulation is explicitly shared by the renderer and input handlers.
 
-Browser interaction/visual QA was not performed in this implementation session. The production route is rendered by the static exporter, and local HTTP delivery is checked. Long-session pacing remains a playtesting area.
+The GitHub Pages build was tested in a browser at `/game13/`: hatching, keyboard movement, the on-screen direction pad, observation, absorption, the almanac, and saved progress after reload all worked. No warnings or errors were reported by the browser during those checks. Long-session pacing and comprehensive visual/device QA remain playtesting areas.
 
-The optional `read_cartology` and `play_cartology` WebMCP tools use the same engine as visible controls, validate action batches before applying them, and unregister on lifecycle cleanup. No supported WebMCP validation context was available in this session; registration and execution in a supporting browser remain unverified. Unsupported browsers simply play normally.
+The optional `read_cartology` and `play_cartology` WebMCP tools use the same engine as visible controls, validate action batches before applying them, and unregister on lifecycle cleanup. Both tools registered in the browser; `read_cartology` correctly reflected movement, absorption, and persisted progress. The action tool was not part of this browser smoke test. Unsupported browsers simply play normally.
 
 ## Deployment
 
 `npm run build` exports static assets to `dist/client`. Only that public output and the hosting manifest are packaged for Sites. Server intermediates, local saves, source credentials, original vault documents, and source code are excluded from the deployment archive.
 
-Sites source and the GitHub repository should be updated from the same commit. Reuse the project ID in `.openai/hosting.json`. Source credentials are temporary and must never be committed or embedded in remote URLs.
+`npm run build:pages` exports routes and assets with the `/game13/` base path and copies the ready-to-serve game into `docs/`, preserving this document and the example CI workflow. The build verifies the exported HTML, CSS, and JavaScript asset references against the project URL. GitHub Pages should publish from `main` and `/docs`; `.nojekyll` preserves the `_next` assets. Rebuild and commit `docs/` with subsequent game changes. `npm run preview:pages` serves the committed build at the same URL path locally.
+
+The GitHub Pages deployment is the public play link. The original private Sites deployment remains a separate deployment; reuse the project ID in `.openai/hosting.json` for any future Sites update. Source credentials are temporary and must never be committed or embedded in remote URLs.
 

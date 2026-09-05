@@ -2,7 +2,7 @@
 
 A playable web adaptation of Adam Vozzo’s Cartology design: a small lichen symbiont explores a failing ecosystem, and an almanac carries its discoveries across lives.
 
-**[Play Cartology](https://cartology-game13.silly-newt-5996.chatgpt.site)** — the Sites deployment is initially private to its owner.
+**[Play Cartology on GitHub Pages](https://adam-vozzo.github.io/game13/)** — no account or installation required.
 
 ## Play
 
@@ -54,9 +54,24 @@ npm run lint
 npm run build
 ```
 
-The static game is exported to `dist/client`. Host that directory at a domain’s root with any static HTTP host. The game does not require a running Node server. `npm start` can also serve the production build locally.
+The default static game is exported to `dist/client` for hosting at a domain’s root. The game does not require a running Node server. `npm start` can also serve that production build locally.
 
 The build script uses Vinext’s build and prerender APIs directly, avoiding an immediate process exit that triggers a native shutdown assertion on Windows. Errors are propagated; the export is checked for the actual game route.
+
+## GitHub Pages
+
+The repository includes the complete compiled game in `docs/`. In **Settings → Pages**, select **Deploy from a branch**, branch **main**, folder **/docs**, and save. After GitHub finishes publishing, play at **https://adam-vozzo.github.io/game13/**.
+
+This build uses `/game13/` for routes and assets. `docs/.nojekyll` ensures GitHub publishes the `_next` scripts and styles. No custom Actions workflow, server, secrets, or login is needed.
+
+After changing the game, rebuild the committed Pages output before pushing:
+
+```sh
+npm run build:pages
+npm run preview:pages
+```
+
+The preview serves the exact published folder at `http://127.0.0.1:4173/game13/`. The build checks that the game’s local asset references resolve under the project URL. Commit the updated source and `docs/` together, then push to `main`; GitHub republishes the folder automatically. Hand-written documentation in `docs/` is preserved by the build.
 
 ## Structure
 

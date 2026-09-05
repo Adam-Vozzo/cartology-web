@@ -8,6 +8,8 @@
   "scripts": {
     "dev": "vinext dev",
     "build": "node scripts/build.mjs",
+    "build:pages": "node scripts/build.mjs --pages",
+    "preview:pages": "node scripts/preview-pages.mjs",
     "start": "vinext start",
     "lint": "oxlint",
     "format": "oxfmt",

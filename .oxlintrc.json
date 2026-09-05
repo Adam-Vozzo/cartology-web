@@ -30,6 +30,7 @@
     "out/**",
     "build/**",
     "dist/**",
+    "docs/_next/**",
     "coverage/**",
     "next-env.d.ts"
   ],
