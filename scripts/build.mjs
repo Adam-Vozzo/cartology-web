@@ -40,7 +40,7 @@ if (!html.includes('Cartology') || !html.includes('<canvas')) {
 console.log(`Cartology static export verified: ${path.relative(root, entry)}`);
 
 if (githubPages) {
-  // GitHub mounts docs/ at /game13/, so remove the export's on-disk prefix.
+  // GitHub mounts docs/ at /cartology-web/, so remove the export's on-disk prefix.
   // Only replace the generated asset tree; keep the hand-written docs.
   const docs = path.resolve(root, 'docs');
   const assets = path.resolve(docs, '_next');
@@ -57,5 +57,5 @@ if (githubPages) {
   // Jekyll otherwise omits the _next directory containing the game's JS/CSS.
   await writeFile(path.join(docs, '.nojekyll'), '');
   await verifyPages(docs);
-  console.log('GitHub Pages ready: main /docs → /game13/');
+  console.log('GitHub Pages ready: main /docs → /cartology-web/');
 }

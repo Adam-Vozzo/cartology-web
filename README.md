@@ -2,7 +2,7 @@
 
 A playable web adaptation of Adam Vozzo’s Cartology design: a small lichen symbiont explores a failing ecosystem, and an almanac carries its discoveries across lives.
 
-**[Play Cartology on GitHub Pages](https://adam-vozzo.github.io/game13/)** — no account or installation required.
+**[Play Cartology on GitHub Pages](https://adam-vozzo.github.io/cartology-web/)** — no account or installation required.
 
 ## Play
 
@@ -60,9 +60,9 @@ The build script uses Vinext’s build and prerender APIs directly, avoiding an 
 
 ## GitHub Pages
 
-The repository includes the complete compiled game in `docs/`. In **Settings → Pages**, select **Deploy from a branch**, branch **main**, folder **/docs**, and save. After GitHub finishes publishing, play at **https://adam-vozzo.github.io/game13/**.
+The repository includes the complete compiled game in `docs/`. In **Settings → Pages**, select **Deploy from a branch**, branch **main**, folder **/docs**, and save. After GitHub finishes publishing, play at **https://adam-vozzo.github.io/cartology-web/**.
 
-This build uses `/game13/` for routes and assets. `docs/.nojekyll` ensures GitHub publishes the `_next` scripts and styles. No custom Actions workflow, server, secrets, or login is needed.
+This build uses `/cartology-web/` for routes and assets. `docs/.nojekyll` ensures GitHub publishes the `_next` scripts and styles. No custom Actions workflow, server, secrets, or login is needed.
 
 After changing the game, rebuild the committed Pages output before pushing:
 
@@ -71,7 +71,7 @@ npm run build:pages
 npm run preview:pages
 ```
 
-The preview serves the exact published folder at `http://127.0.0.1:4173/game13/`. The build checks that the game’s local asset references resolve under the project URL. Commit the updated source and `docs/` together, then push to `main`; GitHub republishes the folder automatically. Hand-written documentation in `docs/` is preserved by the build.
+The preview serves the exact published folder at `http://127.0.0.1:4173/cartology-web/`. The build checks that the game’s local asset references resolve under the project URL. Commit the updated source and `docs/` together, then push to `main`; GitHub republishes the folder automatically. Hand-written documentation in `docs/` is preserved by the build.
 
 ## Structure
 

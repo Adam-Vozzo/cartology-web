@@ -2,10 +2,10 @@ import { access, readFile, readdir } from 'node:fs/promises';
 import path from 'node:path';
 
 // Verify the exported dependency graph against GitHub's project URL, rather
-// than a root-hosted dev server that would hide broken /game13/ asset paths.
+// than a root-hosted dev server that would hide broken /cartology-web/ asset paths.
 export async function verifyPages(directory) {
   const origin = 'https://adam-vozzo.github.io';
-  const base = '/game13/';
+  const base = '/cartology-web/';
   const root = path.resolve(directory);
   await access(path.join(root, '.nojekyll'));
   const files = await readdir(root, { recursive: true });

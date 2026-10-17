@@ -15,16 +15,16 @@ const types = {
 createServer(async (request, response) => {
   try {
     const url = new URL(request.url ?? '/', 'http://localhost:4173');
-    if (url.pathname === '/' || url.pathname === '/game13') {
-      response.writeHead(302, { Location: '/game13/' }).end();
+    if (url.pathname === '/' || url.pathname === '/cartology-web') {
+      response.writeHead(302, { Location: '/cartology-web/' }).end();
       return;
     }
-    if (!url.pathname.startsWith('/game13/')) {
+    if (!url.pathname.startsWith('/cartology-web/')) {
       response.writeHead(404).end('Not found');
       return;
     }
     const relative =
-      decodeURIComponent(url.pathname.slice('/game13/'.length)) || 'index.html';
+      decodeURIComponent(url.pathname.slice('/cartology-web/'.length)) || 'index.html';
     const file = path.resolve(root, relative);
     if (!file.startsWith(root + path.sep)) {
       response.writeHead(403).end('Forbidden');
@@ -41,5 +41,5 @@ createServer(async (request, response) => {
     response.writeHead(404).end('Not found');
   }
 }).listen(4173, '127.0.0.1', () => {
-  console.log('Preview the GitHub Pages build: http://127.0.0.1:4173/game13/');
+  console.log('Preview the GitHub Pages build: http://127.0.0.1:4173/cartology-web/');
 });
